@@ -61,6 +61,7 @@ def print_pairing_info(melon_types):
         print(f"{melon.name} pairs with")
         for pairing in melon.pairings:
             print(f"-{pairing}")
+            print()
     
 
 def make_melon_type_lookup(melon_types):
@@ -69,15 +70,16 @@ def make_melon_type_lookup(melon_types):
     melon_dictionary = {}
 
     for melon in melon_types:
-        melon_dictionary[melon.code] = melon
+        if melon.code not in melon_dictionary:
+            melon_dictionary[melon.code] = melon
 
     return melon_dictionary
 
-jenna_list = make_melon_types()
-print(jenna_list)
-print_pairing_info(jenna_list)
-bhawna_dict = make_melon_type_lookup(jenna_list)
-print(bhawna_dict)
+melon_list = make_melon_types()
+print(melon_list)
+print_pairing_info(melon_list)
+melon_type_dict = make_melon_type_lookup(melon_list)
+print(melon_type_dict)
 
 ############
 # Part 2   #
